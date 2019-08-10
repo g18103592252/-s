@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    var data = [
+        { value: 335, name: '直接访问', color: "rgb(213, 58, 53)" },
+        { value: 310, name: '邮件营销', color: "rgb(51, 75, 92)" },
+        { value: 234, name: '联盟广告', color: "rgb(106, 176, 184)" },
+        { value: 135, name: '视频广告', color: "rgb(233, 143, 111)" },
+        { value: 1548, name: '搜索引擎', color: "rgb(145, 199, 174)" }
+    ]
+    console.log(data);
+    const canvas = document.createElement('canvas');
+    const W_H = 700;
+    canvas.width = W_H;
+    canvas.height = W_H;
+    canvas.style.border = '1px solid #ccc';
+    document.body.appendChild(canvas);
+
+    const ctx = canvas.getContext('2d');
+
+    var val = data.map(function (k) {
+        return k.value;
+    });
+    var sum = val.reduce(function (pur, cur) {
+        return pur + cur;
+    });
+    var preDeg = Math.PI / 180;
+    var deg = val.map(function (k) {
+        return k / sum * 360;
+    });
+
+
+    var starDeg = -90;
+    for (var i = 0; i < data.length; i++) {
+        var enDeg = deg[i];
+        ctx.save();
+        ctx.beginPath();
+        ctx.fillStyle = data[i].color;
+        ctx.moveTo(350, 350);
+        ctx.arc(350, 350, 200, starDeg * preDeg, (starDeg + enDeg) * preDeg);
+        ctx.closePath();
+        ctx.fill();
+        ctx.restore();
+        starDeg += enDeg;
+
+        //小色块
+        ctx.save();
+        ctx.beginPath();
+        ctx.fillStyle = data[i].color;
+        ctx.rect(20, i * 30 + 20, 35, 18);
+        ctx.closePath();
+        ctx.fill();
+        ctx.restore();
+        //文字
+        ctx.beginPath();
+        ctx.fillText(data[i].name, 70, i * 30 + 33)
+    }
+    ctx.save();
+    ctx.fillStyle = 'white'
+    ctx.beginPath();
+    ctx.arc(350, 350, 160, 0, 360 * preDeg);
+    ctx.closePath();
+    ctx.fill();
+    ctx.restore();
+
+
+</script>
+
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    const canvas = document.createElement('canvas');
+    const W_H = 700;
+    canvas.width = W_H;
+    canvas.height = W_H;
+    canvas.style.border = '1px solid #ccc';
+    document.body.appendChild(canvas);
+
+    const ctx = canvas.getContext('2d');
+
+    //头
+    ctx.save();
+    ctx.fillStyle = 'yellow';
+    ctx.beginPath();
+    ctx.moveTo(350, 350)
+    ctx.arc(350, 350, 200, 0, Math.PI / 180 * 345);
+    ctx.closePath();
+    ctx.fill();
+    ctx.restore();
+
+    //头发
+    ctx.save();
+    ctx.strokeStyle = '#000';
+    ctx.lineWidth = 5;
+    ctx.beginPath();
+    ctx.moveTo(300, 155);
+    ctx.lineTo(300, 205);
+    ctx.moveTo(310, 155);
+    ctx.lineTo(310, 205);
+    ctx.moveTo(320, 155);
+    ctx.lineTo(320, 205);
+    ctx.moveTo(330, 155);
+    ctx.lineTo(330, 205);
+    ctx.moveTo(340, 155);
+    ctx.lineTo(340, 205);
+    ctx.moveTo(350, 155);
+    ctx.lineTo(350, 205);
+    ctx.moveTo(360, 155);
+    ctx.lineTo(360, 205);
+    ctx.moveTo(370, 155);
+    ctx.lineTo(370, 205);
+    ctx.moveTo(380, 155);
+    ctx.lineTo(380, 205);
+    ctx.moveTo(390, 155);
+    ctx.lineTo(390, 205);
+    ctx.stroke();
+    ctx.restore();
+
+    //眼睛
+    ctx.save();
+    ctx.fillStyle = "#fff";
+    ctx.beginPath();
+    ctx.arc(450, 250, 30, 0, Math.PI / 180 * 360);
+    ctx.closePath();
+    ctx.fill();
+    ctx.restore();
+    ctx.beginPath();
+    ctx.arc(465, 265,10, 0, Math.PI / 180 * 360);
+    ctx.closePath();
+    ctx.fill();
+
+
+
+</script>
+
+</html>
